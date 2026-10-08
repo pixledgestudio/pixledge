@@ -1,0 +1,5 @@
+const filters=document.querySelectorAll('.filter'),projects=document.querySelectorAll('.project');
+filters.forEach(f=>f.onclick=()=>{filters.forEach(x=>x.classList.remove('active'));f.classList.add('active');const v=f.dataset.f;projects.forEach(p=>p.classList.toggle('hide',v!=='all'&&!p.dataset.c.split(' ').includes(v)))});
+const modal=document.getElementById('modal'),mi=document.getElementById('modalimg'),mt=document.getElementById('modaltitle'),mtype=document.getElementById('modaltype');
+projects.forEach(p=>p.onclick=()=>{mi.src=p.querySelector('img').src;mt.textContent=p.dataset.title;mtype.textContent=p.dataset.type;modal.classList.add('show')});
+document.getElementById('close').onclick=()=>modal.classList.remove('show');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('show')};document.onkeydown=e=>{if(e.key==='Escape')modal.classList.remove('show')};
